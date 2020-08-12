@@ -1,0 +1,37 @@
+# (Header 1, title)
+## (Header 2, major headings)
+### (Header 3, subheadings)
+#### (Header 4)
+##### (Header 5)
+###### (Header 6)
+
+<h1>Header 1,title<h1>
+<h2>Header 2,major headings<h2>
+<h3>Header 3,subheadings<h3>
+<h4>Header 4<h4>
+<h5>Header 5<h5>
+<h6>Header 6<h6>
+
+Bold: __string__ or **string** 
+Italic: _string_ or *string*
+
+$ mathematical symbols $
+
+Line Break: <br>
+
+Colors: <font color=blue|red|green|pink|yellow>Text</font> 
+
+Indented quoting: Use a greater than sign (>) and then a space, then type the text. 
+
+Bullets: Use the dash sign (- ) with a space after it, or a space, a dash, and a space ( - ), to create a circular bullet. To create a sub bullet, use a tab followed a dash and a space. You can also use an asterisk instead of a dash, and it works the same.
+
+Numbered lists: Start with 1. followed by a space, then it starts numbering for you. Start each line with some number and a period, then a space. Tab to indent to get subnumbering.
+
+Graphics: You can attach image files directly to a notebook only in Markdown cells. Drag and drop your images to the Mardown cell to attach it to the notebook. To add images to other cell types, you can use only graphics that are hosted on the web. You can’t add captions for graphics at this time. Use this code: <img src="url.gif" alt="Alt text that describes the graphic" title="Title text" />
+
+Horizontal lines: Use three asterisks: ***
+
+Internal links: To link to a section, use this code: [section title](#section-title) For the text in the parentheses, replace spaces and special characters with a hyphen. Make sure to test all the links!
+Alternatively, you can add an ID for a section right above the section title. Use this code: <a id="section_ID"></a> Make sure that the section_ID is unique within the notebook.
+
+External links: Use this code and test all links! [link text](http://url)

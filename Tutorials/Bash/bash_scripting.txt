@@ -1,0 +1,122 @@
+filters input based on regex:
+grep
+
+concatenate files line-by-line:
+cat
+
+gives first/last lines:
+head/tail -n
+
+does a word or line count:
+wc -w -l
+
+does pattern-matched string replacement:
+sed
+
+gets all lines containing all letters abcd 
+grep [abcd] data.txt
+
+gets all lines containing all letters but abcd 
+grep [abcd]^ data.txt
+
+sorts and makes a distinct count (sorting first is essential)
+sort | uniq -c
+
+fetches top 3 fruits:
+cat fruits.txt | sort | uniq -c | head -n 3
+
+counts the lines containing 'Sydney Carton' or 'Charles Darnay':
+grep 'Sydney Carton\|Charles Darnay' two_cities.txt
+
+check your bash program:
+which bash --> usr/bin/bash
+
+starting a bash script
+#!usr/bin/bash
+
+saving a bash script:
+with a .sh extension
+
+running script:
+bash script.sh
+./script.sh (if the file has #!usr/bin/bash)
+
+creates a pipeline to change strings:
+cat soccer_scores.csv | sed 's/Cherno/Cherno City/g' | sed 's/Arda/Arda United/g' > soccer_scores_edited.csv
+
+input to bash script:
+STDIN
+
+output from bash script:
+STDOUT
+
+errors in program:
+STDERR
+
+error to be deleted:
+2> /dev/null
+
+error to be output:
+1> /del/null
+
+access the arguments:
+$1 first argument
+$2 second argument
+$* all arguments 
+$@ all arguments
+$# number of arguments
+
+arguments:
+bash script.sh one two three four --> last four are the arguments
+
+takes all files in a directory, filters by argument and saves it to a new file
+cat hire_data/* | grep "$1" > "$1".csv
+
+defining a variable:
+var1='Moon' (no spaces allowed)
+
+Referencing variable:
+$var1
+
+firstname='Ada'
+lastname='Lovelace'
+echo 'Hi there ' $firstname $lastname
+
+single quotes:
+'singletext'
+shell interprets what is between literally
+
+double quotes:
+"singletext"
+shell interprets literally except using $ and backticks
+
+bakticks:
+`singletext` 
+shell runs the command and captures STDOUT back into a variable
+a mini shell is opened between the backticks
+
+$() can be used for ``
+
+
+
+numeric operations are not native to bash.
+we use expr to make numeric operation:
+expr 1 + 4
+
+expr is cannot carry commands with decimals.
+we use bc for that purpose:
+echo "5 + 7.5" | bc
+
+bc uses scale argument to determine the number of decimals:
+echo "10 / 3" | bc 
+3
+echo "scale=3; 10 / 3" | bc
+
+assigning numeric variables:
+dog_age=6
+
+doble paranthesis can replace expr:
+echo $((5 + 7))
+
+
+

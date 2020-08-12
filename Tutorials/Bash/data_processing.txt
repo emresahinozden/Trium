@@ -1,0 +1,140 @@
+curl: Client for URL
+downloads data from http(s), ftp
+
+check if curl is installed: man curl
+if not installed: sudo apt install curl
+
+curl -O https://github.com/emresahinozden/Titanic-Classification/blob/master/train.csv
+
+curl -o new_file_name https://github.com/emresahinozden/Titanic-Classification/blob/master/train.csv
+
+# Use curl, download and rename a single file from URL
+curl -o Spotify201812.zip -L https://assets.datacamp.com/production/repositories/4180/datasets/eb1d6a36fa3039e4e00064797e1a1600d267b135/201812SpotifyData.zip
+
+# Unzip, delete, then re-name to Spotify201812.csv
+unzip Spotify201812.zip && rm Spotify201812.zip
+mv 201812SpotifyData.csv Spotify201812.csv
+
+
+
+Wget: WWW get
+downloads data from http(s), ftp
+better than curl at downloading multiple files recursively
+
+check if curl is installed: which curl
+if not installed: sudo apt install wget
+
+-b: run in the background
+-q: turn off wget output
+-c: continue broken download
+
+log: cat wget-log
+
+wget -cb https://github.com/emresahinozden/Titanic-Classification/blob/master/train.csv
+
+url_list.txt: a list of URLs
+--limit-rate: bandwidth limit
+wget --limit-rate=200k -i url_list.txt
+
+--wait: mandatory wait time between files, numerous small files
+wget --wait=2.5 -i url_list.txt
+
+
+
+CSVkit: written by python
+pip install csvkit
+
+manual
+csvkit --help
+
+in2csv data.xlsx > data.csv
+
+print all sheet names
+in2csv -n data.xlsx
+
+--sheet option to designate the sheet to be converted
+in2csv data.xlsx --sheet "worksheet_one" > data.csv
+
+data preview
+csvlook data.csv
+
+data statistics
+csvstat data.csv
+
+filters data by column
+csvcut
+
+prints columns' names
+csvcut --names
+
+returns column in data by position
+csvcut -c 1 data.csv
+csvcut -c 2,3 data.csv
+
+returns designated columns in data
+dsvcut -c "track_id" data.csv
+
+filters data by row
+csvgrep
+
+-m followed by exact row value to filter
+-r followed with a regex pattern
+-f followed by the path of file
+
+finds rows with track_id 
+csvgrep -c "track_id" -m %5AkR92Joj data.csv
+
+stacks up the rows of multiple files
+csvstack data1.csv data2.csv > data_all.csv
+
+storing source as a column in stacking
+csvstack -g "data1","data2" -n "source" \
+data1.csv data2.csv > data_all.csv
+
+chaining commands
+csvlook data.csv; csvstat data.csv
+
+runs second command only if the first succeeds
+csvlook data.csv && csvstat data.csv
+
+pipe the output of first command as input to the second
+csvcut -c "track_id","danceability" data.csv | csvlook
+
+executes SQL query and results to csv
+sql2csv --db "sqlite:///DataBase.dv" \
+	--query "SELECT * FROM DataBase" \
+	> Data.csv
+	
+runs query on CSV table
+csvsql --query "SELECT * FROM data LIMIT 1" \
+       data.csv
+       
+csvsql --query "SELECT * FROM file_a INNER JOIN file_b..." file_a file_b
+
+# Store SQL query as shell variable
+sqlquery="SELECT * FROM Spotify_MusicAttributes ORDER BY duration_ms LIMIT 1"
+# Apply SQL query to Spotify_MusicAttributes.csv
+csvsql --query "$sqlquery" Spotify_MusicAttributes.csv
+
+
+
+which python
+/home/emre/anaconda3/bin/python
+
+opens python session
+python
+
+closes python session
+exit()
+
+saves python script
+.py
+
+echo "print('hello world')" > hello_world.py
+cat hello_world.py
+python hello_world.py
+
+
+Cron is a simple, free, customizable, purely command-line scheduler. It is native to linux and MacOS
+It is used to automate jobs as bash scripts, python jobs etc.
+
